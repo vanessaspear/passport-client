@@ -41,8 +41,7 @@ export const Trip = ({ trip }) => {
                             trip?.reasons?.map(reason => reason?.reason).join(", ")
                         }
                     </p>  
-                    <Link to={`/trips/${trip.id}`} className="btn btn-primary">View Trip Details</Link>
-                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
+                    <Link to={`/trips/${trip.id}`} className="btn btn-outline-primary">View Trip Details</Link>
                 </div>
             </div>
         </div>

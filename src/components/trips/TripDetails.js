@@ -1,3 +1,5 @@
+//Each trip will have an individual trip page with more details about the trip
+
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { getTrip } from "../managers/TripManager"

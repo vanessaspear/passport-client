@@ -33,3 +33,7 @@ export const deleteTrip = (trip_id) => {
         method: 'DELETE'
     })
 }
+
+export const getReasons = () => {
+    return fetchIt(`${API}/trips/reasons`)
+}

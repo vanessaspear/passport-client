@@ -53,8 +53,8 @@ export const NavBar = () => {
                 {localStorage.getItem("passport_token") ? (
                   <>
                     <li className="navbar__item active">
-                      <Link className="navbar__link" to="/calendar">
-                        <h5>Events</h5>
+                      <Link className="navbar__link" to="/trips">
+                        <h5>Trips</h5>
                       </Link>
                     </li>
                     <li className="navbar__item navbar__logout">

@@ -27,8 +27,7 @@ export const LoginModal = ({ show, handleClose, setLoggedIn }) => {
     first_name: "",
     last_name: "",
     email: "",
-    password: "",
-    isRanger: false,
+    password: ""
   });
 
   const handleLogin = () => {
@@ -55,11 +54,10 @@ export const LoginModal = ({ show, handleClose, setLoggedIn }) => {
       .then((authInfo) => {
         if (authInfo.valid) {
           localStorage.setItem(
-            "np_token",
+            "passport_token",
             JSON.stringify({
               id: authInfo.id,
               name: authInfo.first_name,
-              staff: authInfo.is_staff,
               token: authInfo.token,
             })
           );
@@ -81,8 +79,7 @@ export const LoginModal = ({ show, handleClose, setLoggedIn }) => {
       first_name: "",
       last_name: "",
       email: "",
-      password: "",
-      isRanger: false,
+      password: ""
     })
     setPassword("")
   };
@@ -116,11 +113,10 @@ export const LoginModal = ({ show, handleClose, setLoggedIn }) => {
       .then((createdUser) => {
         if (createdUser.hasOwnProperty("id")) {
           localStorage.setItem(
-            "np_token",
+            "passport_token",
             JSON.stringify({
               id: createdUser.id,
               name: createdUser.first_name,
-              staff: createdUser.is_staff,
               token: createdUser.token,
             })
           );
@@ -252,18 +248,6 @@ export const LoginModal = ({ show, handleClose, setLoggedIn }) => {
             placeholder="Password"
             required
           />
-        </fieldset>
-        <fieldset>
-          <input
-            onChange={(evt) => {
-              const copy = { ...user };
-              copy.isRanger = evt.target.checked;
-              setUser(copy);
-            }}
-            type="checkbox"
-            id="isRanger"
-          />
-          <label htmlFor="email"> I am a Park Ranger </label>
         </fieldset>
         <fieldset>
           <button type="submit" className="register-button">

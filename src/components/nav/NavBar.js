@@ -18,7 +18,7 @@ export const NavBar = () => {
     const [showMenu, setShowMenu] = useState("show")
 
       useEffect(() => {
-          const user = localStorage.getItem("np_token");
+          const user = localStorage.getItem("passport_token");
           if (user) {
             setName(JSON.parse(user).name);
           }
@@ -42,7 +42,7 @@ export const NavBar = () => {
         <div className="top_bar">
           {/* Do not  show the hamburger icon if in Desktop mode*/}
           {isDesktop ? "" : <HamburgerIcon clickHandler={clickHandler} />}
-          <img src="/np_logo2.png" className="navbar__logo" alt="logo" />
+          <img src="/media/photos/passport_logo_2.png" className="navbar__logo" alt="logo" />
             <div className={showMenu}>
               <ul>
                 <li className="navbar__item active">
@@ -50,12 +50,7 @@ export const NavBar = () => {
                     <h5>Home</h5>
                   </Link>
                 </li>
-                <li className="navbar__item active">
-                  <Link className="navbar__link" to="/blogs">
-                    <h5>Blogs</h5>
-                  </Link>
-                </li>
-                {localStorage.getItem("np_token") ? (
+                {localStorage.getItem("passport_token") ? (
                   <>
                     <li className="navbar__item active">
                       <Link className="navbar__link" to="/calendar">
@@ -84,7 +79,7 @@ export const NavBar = () => {
                           ) {
                             setLoggedIn(false);
                             setName("");
-                            localStorage.removeItem("np_token");
+                            localStorage.removeItem("passport_token");
                             navigate("/", { replace: true });
                           }
                         }}
@@ -103,7 +98,7 @@ export const NavBar = () => {
               </ul>
             </div>
             {isDesktop ? (
-            <div className="welcome">{name ? `Welcome ${name}!` : ""}</div>
+            <div className="welcome">{name ? `Welcome, ${name}!` : ""}</div>
           ) : (
             ""
           )}

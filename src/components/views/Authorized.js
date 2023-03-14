@@ -3,7 +3,7 @@ import { Navigate, useLocation } from "react-router-dom"
 export const Authorized = ({ children }) => {
     const location = useLocation()
 
-    if (localStorage.getItem("np_token")) {
+    if (localStorage.getItem("passport_token")) {
         return children
     }
     else {

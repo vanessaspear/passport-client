@@ -8,21 +8,21 @@ export const Trip = ({ trip }) => {
 
     const [photo, setPhoto] = useState([])
 
-    useEffect(
-        () => {
-            getPhotosByTrip(trip.id)
-            .then(photosArray => {
-                let tripPhoto = ""
-                if (photosArray) {
-                    tripPhoto = photosArray[0]?.trip?.image
-                } 
-                setPhoto(tripPhoto)
-            })
-        }
-    )
+    // useEffect(
+    //     () => {
+    //         getPhotosByTrip(trip.id)
+    //         .then(photosArray => {
+    //             let tripPhoto = ""
+    //             if (photosArray) {
+    //                 tripPhoto = photosArray[0]?.trip?.image
+    //             } 
+    //             setPhoto(tripPhoto)
+    //         })
+    //     }
+    // )
 
     return <>
-        <div class="col-sm-6">
+        <div className="col-sm-6">
             <div className="card my-5 mx-5">
                 {/* {
                     photo ? <img src={`http://localhost:8000/media/photos/${photo}`} className="card-img-top" alt="The trip's location"/>
@@ -41,8 +41,7 @@ export const Trip = ({ trip }) => {
                             trip?.reasons?.map(reason => reason?.reason).join(", ")
                         }
                     </p>  
-                    <Link to={`/trips/${trip.id}`} className="btn btn-primary">View Trip Details</Link>
-                    {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
+                    <Link to={`/trips/${trip.id}`} className="btn btn-outline-primary">View Trip Details</Link>
                 </div>
             </div>
         </div>

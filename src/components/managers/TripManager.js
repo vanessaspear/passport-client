@@ -21,9 +21,9 @@ export const createTrip = (trip) => {
     })
 }
 
-export const updateTrip = (trip) => {
-    return fetchIt(`${API}/trips/${trip.id}`, {
-        method: 'POST',
+export const updateTrip = (tripId, trip) => {
+    return fetchIt(`${API}/trips/${tripId}`, {
+        method: 'PUT',
         body: JSON.stringify(trip)
     })
 }
@@ -32,4 +32,8 @@ export const deleteTrip = (trip_id) => {
     return fetchIt(`${API}/trips/${trip_id}`, {
         method: 'DELETE'
     })
+}
+
+export const getReasons = () => {
+    return fetchIt(`${API}/trips/reasons`)
 }

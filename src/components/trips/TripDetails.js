@@ -1,5 +1,8 @@
+//Each trip will have an individual trip page with more details about the trip
+
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { getTrip } from "../managers/TripManager"
 
 export const TripDetails = () => {
@@ -18,5 +21,10 @@ export const TripDetails = () => {
         getTrip(id).then(data => setTrip(data))
     }, [tripId])
 
-    return <></>
+    return <>
+    <div className="row my-5 mx-5">
+        <Link to={`/trips/edit/${tripId}`} className="btn btn-primary col-3">Edit Trip</Link>
+    </div>
+    
+    </>
 }

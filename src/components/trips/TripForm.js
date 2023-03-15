@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
+import { Link } from "react-router-dom"
 import { getTrip, createTrip, updateTrip, getReasons } from "../managers/TripManager"
 
 export const TripForm = () => {
@@ -109,6 +110,7 @@ export const TripForm = () => {
 
                     }</div>
             </fieldset>
+            <Link to={`/itineraries/new`} className="btn btn-primary col-3">Add Itinerary</Link>
             <div className="row my-5 mx-5">
                 <button type="submit"
                     onClick={evt => {
@@ -134,7 +136,7 @@ export const TripForm = () => {
                             tripId ? "Update" : "Create"
                         }
                 </button>
-                <a href="http://localhost:3000/trips" class="btn btn-primary col-3">Cancel</a>
+                <Link to={`trips`} className="btn btn-primary col-3">Cancel</Link>
             </div>
         </form>
     )

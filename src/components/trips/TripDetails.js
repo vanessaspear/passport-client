@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { getTrip } from "../managers/TripManager"
+import { Itineraries } from "../itineraries/Itineraries"
 
 export const TripDetails = () => {
     const { tripId } = useParams()
@@ -25,6 +26,6 @@ export const TripDetails = () => {
     <div className="row my-5 mx-5">
         <Link to={`/trips/edit/${tripId}`} className="btn btn-primary col-3">Edit Trip</Link>
     </div>
-    
+    <Itineraries tripId={tripId}/>
     </>
 }

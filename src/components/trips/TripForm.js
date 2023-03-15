@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { getTrip, createTrip, updateTrip, getReasons } from "../managers/TripManager"
 
 export const TripForm = () => {
+    const { tripId } = useParams()
     const navigate = useNavigate()
     const [reasons, setReasons] = useState([])
     const [tripReasons, setTripReasons] = useState(new Set())
@@ -16,7 +17,6 @@ export const TripForm = () => {
         return_date: "",
         reasons: []
     })
-    const { tripId } = useParams()
 
     const reasonArr = (reasonId) => {
         let copy = new Set(tripReasons)
@@ -27,7 +27,7 @@ export const TripForm = () => {
     useEffect(() => {
         if (tripId) {
             getTrip(tripId)
-                .then((trip) => {
+                .then((trip) => {   
                     setCurrentTrip(trip)
                     const reasonSet = new Set()
                     for (const reason of trip.reasons) {
@@ -92,8 +92,8 @@ export const TripForm = () => {
                     <label htmlFor="content" className="label">Reasons: </label>
                     {
                         reasons.map(reason => {
-                            // Compare current `id` and see if on object exists with that id in currentTrip.reasons
-                            const foundReason = currentTrip.reasons.find(tripReason => reason.id === tripReason.reason)
+                            // Compare current reason `id` and see if an object exists with that id in currentTrip.reasons
+                            const foundReason = currentTrip.reasons.find(tripReason => reason.id === tripReason.id)
 
                             return <div key={`reason--${reason.id}`}>
                                 <input type="checkbox" name={reason.reason}
@@ -123,7 +123,7 @@ export const TripForm = () => {
 
                     // If there is a tripId route parameter, invoke updateTrip, otherwise createTrip
                     if (tripId) {
-                        updateTrip(trip.id, trip).then(() => navigate("/trips"))
+                        updateTrip(tripId, trip).then(() => navigate("/trips"))
                     }
                     else {
                         createTrip(trip).then(() => navigate("/trips"))

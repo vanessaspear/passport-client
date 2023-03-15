@@ -21,9 +21,9 @@ export const createTrip = (trip) => {
     })
 }
 
-export const updateTrip = (trip) => {
-    return fetchIt(`${API}/trips/${trip.id}`, {
-        method: 'POST',
+export const updateTrip = (tripId, trip) => {
+    return fetchIt(`${API}/trips/${tripId}`, {
+        method: 'PUT',
         body: JSON.stringify(trip)
     })
 }

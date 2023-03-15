@@ -20,7 +20,6 @@ useEffect(
 ) 
 
 return <>
-        <h5 style={{textAlign: 'center'}}>Trip Itineraries</h5>
         <div className="row">
             {
                 itineraries.map( itinerary => <Itinerary key={`itinerary--${itinerary.id}`} itinerary={itinerary}/>)

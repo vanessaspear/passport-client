@@ -34,6 +34,6 @@ export const deleteItinerary = (itinerary_id) => {
     })
 }
 
-export const getReasons = () => {
-    return fetchIt(`${API}/itineraries/reasons`)
+export const getCategories = () => {
+    return fetchIt(`${API}/itineraries/categories`)
 }

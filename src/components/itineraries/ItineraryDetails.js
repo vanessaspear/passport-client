@@ -8,15 +8,15 @@ import { getItinerary } from "../managers/ItineraryManager"
 export const ItineraryDetails = () => {
     const { itineraryId } = useParams()
     const [itinerary, setItinerary] = useState({
-        "name": "",
-        "itinerary_description": "",
-        "date": "",
-        "start_time": "",
-        "end_time": "",
-        "city": "",
-        "state_or_country": "",
-        "trip_id": 0,
-        "categories": []
+        name: "",
+        itinerary_description: "",
+        date: "",
+        start_time: "",
+        end_time: "",
+        city: "",
+        state_or_country: "",
+        trip_id: 0,
+        categories: []
     })
 
     useEffect(() => {

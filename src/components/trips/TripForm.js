@@ -18,7 +18,7 @@ export const TripForm = () => {
         return_date: "",
         reasons: []
     })
-
+    
     const reasonArr = (reasonId) => {
         let copy = new Set(tripReasons)
         copy.has(reasonId) ? copy.delete(reasonId) : copy.add(reasonId)
@@ -110,7 +110,6 @@ export const TripForm = () => {
 
                     }</div>
             </fieldset>
-            <Link to={`/itineraries/new`} className="btn btn-primary col-3">Add Itinerary</Link>
             <div className="row my-5 mx-5">
                 <button type="submit"
                     onClick={evt => {
@@ -136,7 +135,7 @@ export const TripForm = () => {
                             tripId ? "Update" : "Create"
                         }
                 </button>
-                <Link to={`trips`} className="btn btn-primary col-3">Cancel</Link>
+                <Link to={`/trips`} className="btn btn-primary col-3">Close</Link>
             </div>
         </form>
     )

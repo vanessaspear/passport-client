@@ -50,8 +50,12 @@ export const TripForm = () => {
 
 
     return (
-        <form className="gameForm">
-            <h2 className="gameForm__title">Add Trip Information</h2>
+        <form className="tripForm">
+            <h2 className="tripForm__title">
+                {
+                    tripId ? "Update Trip Information" : "Add Trip Information"
+                }
+            </h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name: </label>
@@ -105,31 +109,33 @@ export const TripForm = () => {
 
                     }</div>
             </fieldset>
+            <div className="row my-5 mx-5">
+                <button type="submit"
+                    onClick={evt => {
+                        // Prevent form from being submitted
+                        evt.preventDefault()
 
-            <button type="submit"
-                onClick={evt => {
-                    // Prevent form from being submitted
-                    evt.preventDefault()
+                        const trip = {
+                            id: currentTrip.id,
+                            name: currentTrip.name,
+                            city: currentTrip.city,
+                            state_or_country: currentTrip.state_or_country,
+                            departure_date: currentTrip.departure_date,
+                            return_date: currentTrip.return_date,
+                            reasons: Array.from(tripReasons)
+                        }
 
-                    const trip = {
-                        id: currentTrip.id,
-                        name: currentTrip.name,
-                        city: currentTrip.city,
-                        state_or_country: currentTrip.state_or_country,
-                        departure_date: currentTrip.departure_date,
-                        return_date: currentTrip.return_date,
-                        reasons: Array.from(tripReasons)
-                    }
-
-                    // If there is a tripId route parameter, invoke updateTrip, otherwise createTrip
-                    if (tripId) {
-                        updateTrip(tripId, trip).then(() => navigate("/trips"))
-                    }
-                    else {
-                        createTrip(trip).then(() => navigate("/trips"))
-                    }
-                }}
-                className="btn btn-primary">Create</button>
+                        // If there is a tripId route parameter, invoke updateTrip, otherwise createTrip
+                        tripId ? updateTrip(tripId, trip).then(() => navigate("/trips"))
+                        : createTrip(trip).then(() => navigate("/trips"))
+                    }}
+                    className="btn btn-primary col-3">
+                        {
+                            tripId ? "Update" : "Create"
+                        }
+                </button>
+                <a href="http://localhost:3000/trips" class="btn btn-primary col-3">Cancel</a>
+            </div>
         </form>
     )
 }

@@ -23,10 +23,6 @@ export const TripDetails = () => {
         getTrip(id).then(data => setTrip(data))
     }, [tripId])
 
-    const handleClick = () => {
-        
-        return <ItineraryForm tripId={tripId}/>
-    }
 
     return <>
     <div className="row my-5 mx-5">
@@ -34,7 +30,7 @@ export const TripDetails = () => {
     </div>
     <h5 style={{textAlign: 'center'}}>Trip Itineraries</h5>
     <div className="row my-1 mx-5">
-        <button className="btn btn-primary col-3" onClick={handleClick}>Add Itinerary</button>
+        <Link className="btn btn-primary col-3" to={`/itineraries/${tripId}/new`}>Add Itinerary</Link>
     </div>
     <Itineraries tripId={tripId}/>
     </>

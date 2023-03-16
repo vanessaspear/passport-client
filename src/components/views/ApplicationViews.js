@@ -16,8 +16,8 @@ export const ApplicationViews = () => {
       <Route path="/trips/edit/:tripId" element={<TripForm />} />
       <Route path="/itineraries" element={<Itineraries />} />
       <Route path="/itineraries/:itineraryId" element={<ItineraryDetails />} />
-      <Route path="/itineraries/new" element={<ItineraryForm />} />
-      <Route path="/itineraries/edit/:itineraryId" element={<ItineraryForm />} />
+      <Route path="/itineraries/:tripId/new" element={<ItineraryForm />} />
+      {/* <Route path="/itineraries/edit/:itineraryId" element={<ItineraryForm />} /> */}
     </Routes>
   );
 }

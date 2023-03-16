@@ -3,9 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from "react-router-dom"
 import { getItinerary, createItinerary, updateItinerary, getCategories } from "../managers/ItineraryManager"
 
-export const ItineraryForm = ({ tripId }) => {
-    const { itineraryId } = useParams()
+export const ItineraryForm = () => {
     const navigate = useNavigate()
+    const { tripId } = useParams()
     const [categories, setCategories] = useState([])
     const [itineraryCategories, setItineraryCategories] = useState(new Set())
     const [currentItinerary, setCurrentItinerary] = useState({
@@ -16,7 +16,7 @@ export const ItineraryForm = ({ tripId }) => {
         end_time: "",
         city: "",
         state_or_country: "",
-        trip: 0,
+        trip: tripId,
         categories: []
     })
     
@@ -25,20 +25,6 @@ export const ItineraryForm = ({ tripId }) => {
         copy.has(categoryId) ? copy.delete(categoryId) : copy.add(categoryId)
         setItineraryCategories(copy)
     }
-
-    useEffect(() => {
-        if (itineraryId) {
-            getItinerary(itineraryId)
-                .then((itinerary) => {   
-                    setCurrentItinerary(itinerary)
-                    const categorySet = new Set()
-                    for (const category of itinerary.categories) {
-                        categorySet.add(category.id)
-                    }
-                    setItineraryCategories(categorySet)
-            })
-        }
-    }, [itineraryId])
 
     useEffect(() => {
         getCategories().then(data => setCategories(data))
@@ -53,16 +39,40 @@ export const ItineraryForm = ({ tripId }) => {
 
     return (
         <form className="itineraryForm">
-            <h2 className="itineraryForm__title">
-                {
-                    itineraryId ? "Update Itinerary Information" : "Add Itinerary Information"
-                }
-            </h2>
+            <h2 className="itineraryForm__title">Itinerary Information</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name: </label>
                     <input type="text" name="name" required autoFocus className="form-control"
                         value={currentItinerary.name}
+                        onChange={changeItineraryState}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="itinerary_description">Itinerary Description: </label>
+                    <input type="text" name="itinerary_description" required autoFocus className="form-control"
+                        value={currentItinerary.itinerary_description}
+                        onChange={changeItineraryState}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="date">Date:</label>
+                    <input type="date" name="date" required autoFocus className="form-control"
+                        value={currentItinerary.date}
+                        onChange={changeItineraryState}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="start_time">Start Time:</label>
+                    <input type="time" name="start_time" required autoFocus className="form-control"
+                        value={currentItinerary.start_time}
+                        onChange={changeItineraryState}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="end_time">End Time:</label>
+                    <input type="time" name="end_time" required autoFocus className="form-control"
+                        value={currentItinerary.end_time}
                         onChange={changeItineraryState}
                     />
                 </div>
@@ -77,20 +87,6 @@ export const ItineraryForm = ({ tripId }) => {
                     <label htmlFor="state_or_country">State / Country </label>
                     <input type="text" name="state_or_country" required autoFocus className="form-control"
                         value={currentItinerary.state_or_country}
-                        onChange={changeItineraryState}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="departure_date">Departure Date:</label>
-                    <input type="date" name="departure_date" required autoFocus className="form-control"
-                        value={currentItinerary.departure_date}
-                        onChange={changeItineraryState}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="return_date">Return Date:</label>
-                    <input type="date" name="return_date" required autoFocus className="form-control"
-                        value={currentItinerary.return_date}
                         onChange={changeItineraryState}
                     />
                 </div>
@@ -118,7 +114,6 @@ export const ItineraryForm = ({ tripId }) => {
                         evt.preventDefault()
 
                         const itinerary = {
-                            id: currentItinerary.id,
                             name: currentItinerary.name,
                             itinerary_description: currentItinerary.itinerary_description,
                             date: currentItinerary.date,
@@ -130,15 +125,9 @@ export const ItineraryForm = ({ tripId }) => {
                             categories: Array.from(itineraryCategories)
                         }
 
-                        // If there is a itineraryId route parameter, invoke updateItinerary, otherwise createItinerary
-                        itineraryId ? updateItinerary(itineraryId, itinerary).then(() => navigate(`/trips/${tripId}`))
-                        : createItinerary(itinerary).then(() => navigate(`/trips/${tripId}`))
+                        createItinerary(itinerary).then(() => navigate(`/trips/${tripId}`))
                     }}
-                    className="btn btn-primary col-3">
-                        {
-                            itineraryId ? "Update" : "Create"
-                        }
-                </button>
+                    className="btn btn-primary col-3">Create</button>
                 <Link to={`/trips/${tripId}`} className="btn btn-primary col-3">Close</Link>
             </div>
         </form>

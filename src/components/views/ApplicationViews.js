@@ -5,6 +5,7 @@ import { TripForm } from "../trips/TripForm"
 import { Itineraries } from "../itineraries/Itineraries"
 import { ItineraryDetails } from "../itineraries/ItineraryDetails"
 import { ItineraryForm } from "../itineraries/ItineraryForm"
+import { EditItinerary } from "../itineraries/EditItinerary"
 
 export const ApplicationViews = () => {
 	return (
@@ -17,7 +18,7 @@ export const ApplicationViews = () => {
       <Route path="/itineraries" element={<Itineraries />} />
       <Route path="/itineraries/:itineraryId" element={<ItineraryDetails />} />
       <Route path="/itineraries/:tripId/new" element={<ItineraryForm />} />
-      {/* <Route path="/itineraries/edit/:itineraryId" element={<ItineraryForm />} /> */}
+      <Route path="/itineraries/edit/:itineraryId" element={<EditItinerary />} />
     </Routes>
   );
 }

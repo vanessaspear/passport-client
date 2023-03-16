@@ -57,14 +57,14 @@ export const NavBar = () => {
                         <h5>Trips</h5>
                       </Link>
                     </li>
-                    <li className="navbar__item navbar__logout">
-                      <Link className="navbar__link" to="my-blogs">
-                        <h5>My Blogs</h5>
+                    <li className="navbar__item active">
+                      <Link className="navbar__link" to="/stamps">
+                        <h5>Stamps</h5>
                       </Link>
                     </li>
-                    <li className="navbar__item navbar__logout">
-                      <Link className="navbar__link" to="hub">
-                        <h5>My Hub</h5>
+                    <li className="navbar__item active">
+                      <Link className="navbar__link" to="Discovery">
+                        <h5>Discovery</h5>
                       </Link>
                     </li>
                     <li className="navbar__item navbar__logout">

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from "react-router-dom"
-import { createItinerary, getCategories } from "../managers/ItineraryManager"
+import { getItinerary, updateItinerary, getCategories } from "../managers/ItineraryManager"
 
-export const ItineraryForm = () => {
+export const EditItinerary = () => {
     const navigate = useNavigate()
-    const { tripId } = useParams()
+    const { itineraryId } = useParams()
     const [categories, setCategories] = useState([])
     const [itineraryCategories, setItineraryCategories] = useState(new Set())
     const [currentItinerary, setCurrentItinerary] = useState({
@@ -16,7 +16,7 @@ export const ItineraryForm = () => {
         end_time: "",
         city: "",
         state_or_country: "",
-        trip: tripId,
+        trip: 0,
         categories: []
     })
     
@@ -25,6 +25,18 @@ export const ItineraryForm = () => {
         copy.has(categoryId) ? copy.delete(categoryId) : copy.add(categoryId)
         setItineraryCategories(copy)
     }
+
+    useEffect(() => {
+        getItinerary(itineraryId)
+            .then((itinerary) => {   
+                setCurrentItinerary(itinerary)
+                const categorySet = new Set()
+                for (const category of itinerary.categories) {
+                    categorySet.add(category.id)
+                }
+                setItineraryCategories(categorySet)
+        })
+    }, [itineraryId])
 
     useEffect(() => {
         getCategories().then(data => setCategories(data))
@@ -114,6 +126,7 @@ export const ItineraryForm = () => {
                         evt.preventDefault()
 
                         const itinerary = {
+                            id: currentItinerary.id,
                             name: currentItinerary.name,
                             itinerary_description: currentItinerary.itinerary_description,
                             date: currentItinerary.date,
@@ -121,14 +134,14 @@ export const ItineraryForm = () => {
                             end_time: currentItinerary.end_time,
                             city: currentItinerary.city,
                             state_or_country: currentItinerary.state_or_country,
-                            trip: tripId,
+                            trip: currentItinerary?.trip?.id,
                             categories: Array.from(itineraryCategories)
                         }
 
-                        createItinerary(itinerary).then(() => navigate(`/trips/${tripId}`))
+                        updateItinerary(itineraryId, itinerary).then(() => navigate(`/itineraries/${itinerary.id}`))
                     }}
-                    className="btn btn-primary col-3">Create</button>
-                <Link to={`/trips/${tripId}`} className="btn btn-primary col-3">Close</Link>
+                    className="btn btn-primary col-3">Update</button>
+                <Link to={`/trips/${currentItinerary?.trip?.id}`} className="btn btn-primary col-3">Close</Link>
             </div>
         </form>
     )

@@ -25,6 +25,9 @@ export const ItineraryDetails = () => {
     }, [itineraryId])
 
     return <>
+        <div className="row my-5 mx-5">
+            <Link to={`/itineraries/edit/${itineraryId}`} className="btn btn-primary col-3">Edit Itinerary</Link>
+        </div>
         <h5>{itinerary.name}</h5>
         <p>{itinerary.itinerary_description}</p>
     </>

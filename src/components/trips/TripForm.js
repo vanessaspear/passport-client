@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from 'react-router-dom'
+import { Link } from "react-router-dom"
 import { getTrip, createTrip, updateTrip, getReasons } from "../managers/TripManager"
 
 export const TripForm = () => {
@@ -17,7 +18,7 @@ export const TripForm = () => {
         return_date: "",
         reasons: []
     })
-
+    
     const reasonArr = (reasonId) => {
         let copy = new Set(tripReasons)
         copy.has(reasonId) ? copy.delete(reasonId) : copy.add(reasonId)
@@ -134,7 +135,7 @@ export const TripForm = () => {
                             tripId ? "Update" : "Create"
                         }
                 </button>
-                <a href="http://localhost:3000/trips" class="btn btn-primary col-3">Cancel</a>
+                <Link to={`/trips`} className="btn btn-primary col-3">Close</Link>
             </div>
         </form>
     )

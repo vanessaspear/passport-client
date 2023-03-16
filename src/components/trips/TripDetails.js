@@ -4,16 +4,18 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { getTrip } from "../managers/TripManager"
+import { Itineraries } from "../itineraries/Itineraries"
+import { ItineraryForm } from "../itineraries/ItineraryForm"
 
 export const TripDetails = () => {
     const { tripId } = useParams()
     const [trip, setTrip] = useState({
-        "name": "",
-        "city": "",
-        "state_or_country": "",
-        "departure_date": "",
-        "return_date": "",
-        "reasons": []
+        name: "",
+        city: "",
+        state_or_country: "",
+        departure_date: "",
+        return_date: "",
+        reasons: []
     })
 
     useEffect(() => {
@@ -21,10 +23,15 @@ export const TripDetails = () => {
         getTrip(id).then(data => setTrip(data))
     }, [tripId])
 
+
     return <>
     <div className="row my-5 mx-5">
         <Link to={`/trips/edit/${tripId}`} className="btn btn-primary col-3">Edit Trip</Link>
     </div>
-    
+    <h5 style={{textAlign: 'center'}}>Trip Itineraries</h5>
+    <div className="row my-1 mx-5">
+        <Link className="btn btn-primary col-3" to={`/itineraries/${tripId}/new`}>Add Itinerary</Link>
+    </div>
+    <Itineraries tripId={tripId}/>
     </>
 }

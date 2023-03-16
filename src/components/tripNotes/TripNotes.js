@@ -2,7 +2,7 @@
 
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
-import { getTripNotesByTrip, createTripNote } from "../managers/TripNotesManager"
+import { getTripNotesByTrip, createTripNote, updateTripNote, deleteTripNote } from "../managers/TripNotesManager"
 
 export const TripNotes = ({ tripId }) => {
 
@@ -27,11 +27,13 @@ export const TripNotes = ({ tripId }) => {
     }
 
     return <>
-        <div className="row col-6 mx-auto">
+    <div className='container'>
+        <div className='row'>
             <h5 style={{textAlign: 'center'}}>Trip Notes</h5>
-            <label htmlFor="trip_note">Add Note: </label>
+        </div>
+        <div className="row col-6 mx-auto my-2">
             <textarea name="trip_note" value={newNote.trip_note} onChange={changeNewNoteState}/>
-            <button type="button" className="btn btn-primary btn-sm" onClick={() => {
+            <button type="button" className="btn btn-primary btn-sm my-2" onClick={() => {
                 
                 const noteToPost = {
                     trip_id: tripId,
@@ -43,13 +45,25 @@ export const TripNotes = ({ tripId }) => {
             }}>Add Note</button>
         </div>
         <div className="row">
-            <div className="card my-5 mx-5" style={{width: '25rem'}}>
-                <ul className="list-group list-group-flush">
-                    {
-                        notes.map( note => <li className="list-group-item" key={`tripNote--${note.id}`}>{note.trip_note}</li>)
-                    }
-                </ul>
+            <div className='col'>
+                <div className="card my-5 mx-5">
+                    <ul className="list-group list-group-flush">
+                        {
+                            notes.map( note => <li className="list-group-item" key={`tripNote--${note.id}`}>
+                            <div className="col-12">
+                                {note.trip_note}
+                            </div>
+                            <div className="col-3 mt-3">
+                                <button type="button" className="btn btn-primary btn-sm" onClick={() => 
+                                {deleteTripNote(note.id).then(() => window.location.reload())
+                                }}>Delete</button>
+                            </div>
+                            </li>)
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
     </>
 }

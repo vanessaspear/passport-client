@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
+import { useNavigate } from 'react-router-dom'
 import { Link } from "react-router-dom"
-import { getTrip } from "../managers/TripManager"
+import { getTrip, deleteTrip } from "../managers/TripManager"
 import { Itineraries } from "../itineraries/Itineraries"
-import { ItineraryForm } from "../itineraries/ItineraryForm"
 
 export const TripDetails = () => {
     const { tripId } = useParams()
+    const navigate = useNavigate()
     const [trip, setTrip] = useState({
         name: "",
         city: "",
@@ -27,6 +28,16 @@ export const TripDetails = () => {
     return <>
     <div className="row my-5 mx-5">
         <Link to={`/trips/edit/${tripId}`} className="btn btn-primary col-3">Edit Trip</Link>
+        <button className="btn btn-primary col-3" onClick={() => {
+                if (
+                    window.confirm(
+                      `Are you sure you want to delete this trip?`
+                    )
+                )
+                deleteTrip(tripId)
+                    .then(() => navigate(`/trips`))
+            }
+            }>Delete</button>
     </div>
     <h5 style={{textAlign: 'center'}}>Trip Itineraries</h5>
     <div className="row my-1 mx-5">

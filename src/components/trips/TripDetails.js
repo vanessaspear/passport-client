@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from "react-router-dom"
 import { getTrip, deleteTrip } from "../managers/TripManager"
 import { Itineraries } from "../itineraries/Itineraries"
+import { TripNotes } from "./TripNotes"
 
 export const TripDetails = () => {
     const { tripId } = useParams()
@@ -44,5 +45,6 @@ export const TripDetails = () => {
         <Link className="btn btn-primary col-3" to={`/itineraries/${tripId}/new`}>Add Itinerary</Link>
     </div>
     <Itineraries tripId={tripId}/>
+    <TripNotes tripId={tripId}/>
     </>
 }

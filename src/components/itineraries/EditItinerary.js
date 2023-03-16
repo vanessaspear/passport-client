@@ -138,7 +138,7 @@ export const EditItinerary = () => {
                             categories: Array.from(itineraryCategories)
                         }
 
-                        updateItinerary(itineraryId, itinerary).then(() => navigate(`/trips/${itinerary.trip}`))
+                        updateItinerary(itineraryId, itinerary).then(() => navigate(`/itineraries/${itinerary.id}`))
                     }}
                     className="btn btn-primary col-3">Update</button>
                 <Link to={`/trips/${currentItinerary?.trip?.id}`} className="btn btn-primary col-3">Close</Link>

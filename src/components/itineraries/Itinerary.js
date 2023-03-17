@@ -6,7 +6,7 @@ export const Itinerary = ({ itinerary }) => {
 
     return <>
         <div className="col-sm-6">
-            <div className="card my-5 mx-5">
+            <div className="card card-color my-5 mx-5">
                 <div className="card-body">
                     <h5 className="card-title mb-3">{itinerary.name}</h5>
                     <p className="card-text">

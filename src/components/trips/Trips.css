@@ -1,0 +1,11 @@
+.card-color {
+    border-color: #02D79D;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.card-color:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+}

@@ -27,24 +27,31 @@ export const TripDetails = () => {
 
 
     return <>
-    <div className="row my-5 mx-5">
-        <Link to={`/trips/edit/${tripId}`} className="btn btn-primary col-3">Edit Trip</Link>
-        <button className="btn btn-primary col-3" onClick={() => {
-                if (
-                    window.confirm(
-                      `Are you sure you want to delete this trip?`
+    <div className="container">
+        <div className="row my-5 mx-5">
+            <div className="col">
+                <Link to={`/trips/edit/${tripId}`} className="btn btn-primary">Edit Trip</Link>
+                <button className="btn btn-primary mx-2" onClick={() => {
+                    if (
+                        window.confirm(
+                        `Are you sure you want to delete this trip?`
+                        )
                     )
-                )
-                deleteTrip(tripId)
-                    .then(() => navigate(`/trips`))
-            }
-            }>Delete</button>
-    </div>
-    <h5 style={{textAlign: 'center'}}>Trip Itineraries</h5>
-    <div className="row my-1 mx-5">
-        <Link className="btn btn-primary col-3" to={`/itineraries/${tripId}/new`}>Add Itinerary</Link>
-    </div>
-    <Itineraries tripId={tripId}/>
-    <TripNotes tripId={tripId}/>
+                    deleteTrip(tripId)
+                        .then(() => navigate(`/trips`))
+                }
+                }>Delete Trip</button>
+            </div>
+        </div>
+        <h5 style={{textAlign: 'center'}}>Trip Itineraries</h5>
+        <div className="row my-1 mx-5">
+            <Link className="btn btn-primary col-3" to={`/itineraries/${tripId}/new`}>Add Itinerary</Link>
+        </div>
+        <Itineraries tripId={tripId}/>
+        <hr style={{marginRight: 40, marginLeft: 40}}></hr>
+        <h5>Packing List</h5>
+        <hr style={{marginRight: 40, marginLeft: 40}}></hr>
+        <TripNotes tripId={tripId}/>
+        </div>
     </>
 }

@@ -1,14 +1,14 @@
 .top_bar {
   display: flex;
   align-items: center;
-  background-color: #333;
+  background-color: #16425B;
   position: sticky;
   top: 0;
   z-index: 3;
 }
 
 .welcome {
-  color: rgb(200, 236, 200);
+  color: #81C3D7;
   font-size: 20px;
   width: 25%;
   margin-bottom: 9px;
@@ -29,7 +29,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #16425B;
   display: flex;
   justify-content: left;
   width: 100%;
@@ -37,7 +37,7 @@ ul {
 
 li a {
   display: block;
-  color: rgb(200, 236, 200);
+  color: #81C3D7;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -45,8 +45,8 @@ li a {
 }
 
 li a:hover {
-  background-color: #111;
-  color: green;
+  background-color: #0B2838;
+  color: white;
 }
 
 .show {

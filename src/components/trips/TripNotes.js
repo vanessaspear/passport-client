@@ -50,8 +50,8 @@ export const TripNotes = ({ tripId }) => {
                 <ul className="list-group list-group-flush">
                     {
                         notes.map( note => (
-                            <div className='row'>
-                                <li className="list-group-item" key={`tripNote--${note.id}`}>
+                            <div className='row' key={`tripNote--${note.id}`}>
+                                <li className="list-group-item">
                                     {note.trip_note}
                                 <button type="button" style={{float: "right"}} className="btn btn-primary btn-sm" onClick={() => 
                                     {deleteTripNote(note.id).then(() => window.location.reload())

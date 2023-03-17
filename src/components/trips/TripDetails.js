@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import { getTrip, deleteTrip } from "../managers/TripManager"
 import { Itineraries } from "../itineraries/Itineraries"
 import { TripNotes } from "./TripNotes.js"
+import { PackingList } from "./PackingList"
 
 export const TripDetails = () => {
     const { tripId } = useParams()
@@ -49,7 +50,7 @@ export const TripDetails = () => {
         </div>
         <Itineraries tripId={tripId}/>
         <hr style={{marginRight: 40, marginLeft: 40}}></hr>
-        <h5>Packing List</h5>
+        <PackingList tripId={tripId}/>
         <hr style={{marginRight: 40, marginLeft: 40}}></hr>
         <TripNotes tripId={tripId}/>
         </div>

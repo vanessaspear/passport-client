@@ -5,7 +5,7 @@ const HamburgerIcon = ({clickHandler}) => {
     return (
         <div className="hamburger" onClick={clickHandler}>
             <svg viewBox="0 0 100 100" width="40" height="40">
-                <g color="rgb(200, 236, 200)">
+                <g color="rgb(129, 195, 215)">
                     <rect
                         width="100"
                         height="20"

@@ -12,8 +12,7 @@ export const Landing = () => {
                 <source src={takeoffVideo} type="video/mp4" />
             </video>
             <div className="myText">
-                <h1>Passport</h1>
-                <p>Let Your Life Liftoff</p>
+                <img src="/landing_logo.png" className="landing_logo" alt="logo" />   
             </div>
         </div>
         

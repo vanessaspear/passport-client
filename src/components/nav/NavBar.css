@@ -16,12 +16,11 @@
 }
 
 .navbar__logo {
-  width: 90px;
-  margin-left: 5%;
+  width: 50px;
+  margin-left: 3%;
+  margin-right: 1%;
   padding: 8px;
 }
-
-
 
 ul {
   list-style-type: none;
@@ -62,8 +61,6 @@ li a:hover {
 /* On screens that are 768px or less, apply the following styles */
 @media screen and (max-width: 768px) {
 
-
-
 /* Change the flex-direction of the top_bar which holds the logo and ul */
 .top_bar{
   flex-direction: column;
@@ -73,15 +70,13 @@ li a:hover {
 
 /*move the logo to the top left corner (using top:0 and left:0) and make sure it fits inside the navbar*/
 .navbar__logo {
-  width: 90px;
+  width: 25px;
   position:absolute;
   top:0;
   left:0;
   margin: 0;
   padding: 0;
 }
-
-
 
 /*Change the flex direction of all the li's (which contain the nav links) to column to that they are stacked vertically*/
 /*Also make the ul invisible by setting its display to none*/

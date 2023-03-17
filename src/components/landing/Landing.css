@@ -1,0 +1,35 @@
+.landing-container {
+    overflow: hidden;
+}
+
+.myVideoContainer {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  
+.myVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.myText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+    text-align: center;
+}
+
+.landing_logo {
+    width: 400px;
+}
+
+
+  

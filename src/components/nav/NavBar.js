@@ -41,8 +41,8 @@ export const NavBar = () => {
       <>
         <div className="top_bar">
           {/* Do not  show the hamburger icon if in Desktop mode*/}
+          <img src="/navbar_logo.png" className="navbar__logo" alt="logo" />
           {isDesktop ? "" : <HamburgerIcon clickHandler={clickHandler} />}
-          <img src="/media/photos/passport_logo_2.png" className="navbar__logo" alt="logo" />
             <div className={showMenu}>
               <ul>
                 <li className="navbar__item active">

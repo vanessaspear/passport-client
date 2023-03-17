@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from "react-router-dom"
 import { getTrip, deleteTrip } from "../managers/TripManager"
 import { Itineraries } from "../itineraries/Itineraries"
-import { TripNotes } from "../tripNotes/TripNotes"
+import { TripNotes } from "./TripNotes.js"
 
 export const TripDetails = () => {
     const { tripId } = useParams()

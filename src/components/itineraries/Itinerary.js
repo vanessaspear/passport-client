@@ -23,7 +23,7 @@ export const Itinerary = ({ itinerary }) => {
                             itinerary?.categories?.map(category => category?.category).join(", ")
                         }
                     </p>  
-                    <Link to={`/itineraries/${itinerary.id}`} className="btn btn-outline-primary">View Itinerary Details</Link>
+                    <Link to={`/itineraries/${itinerary.id}`} className="btn btn-outline-primary btn-sm">View Itinerary Details</Link>
                 </div>
             </div>
         </div>

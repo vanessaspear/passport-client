@@ -31,9 +31,11 @@ export const TripNotes = ({ tripId }) => {
         <div className='row'>
             <h5 style={{textAlign: 'center'}}>Trip Notes</h5>
         </div>
-        <div className="row col-6 mx-auto my-2">
-            <textarea name="trip_note" value={newNote.trip_note} onChange={changeNewNoteState}/>
-            <button type="button" className="btn btn-primary btn-sm my-2" onClick={() => {
+        <div className="row col-11 mx-auto my-2 form-group">
+            <textarea className="form-control" rows="4" name="trip_note" value={newNote.trip_note} onChange={changeNewNoteState}/>
+        </div>
+        <div className='row col-6 mx-auto my-2'>
+            <button type="button" className="btn btn-primary my-2" onClick={() => {
                 
                 const noteToPost = {
                     trip_id: tripId,
@@ -44,26 +46,23 @@ export const TripNotes = ({ tripId }) => {
 
             }}>Add Note</button>
         </div>
-        <div className="row">
-            <div className='col'>
-                <div className="card my-5 mx-5">
-                    <ul className="list-group list-group-flush">
-                        {
-                            notes.map( note => <li className="list-group-item" key={`tripNote--${note.id}`}>
-                            <div className="col-12">
-                                {note.trip_note}
-                            </div>
-                            <div className="col-3 mt-3">
-                                <button type="button" className="btn btn-primary btn-sm" onClick={() => 
-                                {deleteTripNote(note.id).then(() => window.location.reload())
+            <div className="card my-5 mx-5">
+                <ul className="list-group list-group-flush">
+                    {
+                        notes.map( note => (
+                            <div className='row'>
+                                <li className="list-group-item" key={`tripNote--${note.id}`}>
+                                    {note.trip_note}
+                                <button type="button" style={{float: "right"}} className="btn btn-primary btn-sm" onClick={() => 
+                                    {deleteTripNote(note.id).then(() => window.location.reload())
                                 }}>Delete</button>
+                                </li>
                             </div>
-                            </li>)
-                        }
-                    </ul>
-                </div>
+                            )
+                        )
+                    }
+                </ul>
             </div>
         </div>
-    </div>
     </>
 }

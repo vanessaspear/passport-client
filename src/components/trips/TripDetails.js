@@ -50,7 +50,7 @@ export const TripDetails = () => {
         </div>
         <Itineraries tripId={tripId}/>
         <hr style={{marginRight: 40, marginLeft: 40}}></hr>
-        <PackingList tripId={tripId}/>
+        <PackingList tripId={tripId} />
         <hr style={{marginRight: 40, marginLeft: 40}}></hr>
         <TripNotes tripId={tripId}/>
         </div>

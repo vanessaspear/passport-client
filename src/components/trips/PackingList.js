@@ -2,10 +2,11 @@
 
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
-import { getPackingListByTrip, packItem, unpackItem } from "../managers/PackingListManager"
+import { getPackingListByTrip, addItem, deleteItem, getItem, updateItem } from "../managers/PackingListManager"
 
 export const PackingList = ({ tripId }) => {
 
+    const navigate = useNavigate()
     const [packingList, setPackingList] = useState([])
     const [newItem, setNewItem] = useState("")
 
@@ -19,12 +20,16 @@ export const PackingList = ({ tripId }) => {
         []
     ) 
 
-    console.log(packingList)
-
     const changeNewItemState = (event) => {
         const copy = { ...newItem }
         copy[event.target.name] = event.target.value
         setNewItem(copy)
+    }
+
+    const updateCurrentItem = (evt) => {
+        let item = getItem(parseInt(evt.target.id))
+        item["packed"] = !(item.packed)
+        updateItem(item.id, item).then(() => navigate(0))
     }
 
     return <>
@@ -40,10 +45,11 @@ export const PackingList = ({ tripId }) => {
                 
                 const itemToPost = {
                     trip_id: tripId,
-                    item: newItem.item
+                    item: newItem.item,
+                    packed: false
                 }
 
-                packItem(itemToPost).then(() => window.location.reload())
+                addItem(itemToPost).then(() => window.location.reload())
 
             }}>Add Item</button>
         </div>
@@ -51,11 +57,16 @@ export const PackingList = ({ tripId }) => {
                 <ul className="list-group list-group-flush">
                     {
                         packingList.map( item => (
-                            <div className='row'>
-                                <li className="list-group-item" key={`item--${item.id}`}>
-                                    {item.item}
+                            <div className='row' key={`item--${item.id}`}>
+                                <li className="list-group-item">
+
+                                    <input type="checkbox" name={item.item} id={item.id}
+                                        defaultChecked={item.packed}
+                                        onClick={(evt) =>  updateCurrentItem(evt)} />
+                                    <label htmlFor={item.item}>{item?.item}</label><br/>
+
                                 <button type="button" style={{float: "right"}} className="btn btn-primary btn-sm" onClick={() => 
-                                    {unpackItem(item.id).then(() => window.location.reload())
+                                    {deleteItem(item.id).then(() => window.location.reload())
                                 }}>Delete</button>
                                 </li>
                             </div>

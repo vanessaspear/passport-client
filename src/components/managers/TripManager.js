@@ -37,3 +37,7 @@ export const deleteTrip = (trip_id) => {
 export const getReasons = () => {
     return fetchIt(`${API}/trips/reasons`)
 }
+
+export const getUpcomingTripCount = () => {
+    return fetchIt(`${API}/trips/upcoming`)
+}

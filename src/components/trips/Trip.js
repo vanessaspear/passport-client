@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import './Trips.css'
 import { getPhotosByTrip } from "../managers/TripPhotoManager"
 
 export const Trip = ({ trip }) => {
@@ -23,7 +24,7 @@ export const Trip = ({ trip }) => {
 
     return <>
         <div className="col-sm-6">
-            <div className="card my-5 mx-5">
+            <div className="card card-color my-5 mx-5">
                 {/* {
                     photo ? <img src={`http://localhost:8000/media/photos/${photo}`} className="card-img-top" alt="The trip's location"/>
                         : ""

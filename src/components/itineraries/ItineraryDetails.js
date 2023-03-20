@@ -27,20 +27,26 @@ export const ItineraryDetails = () => {
     }, [itineraryId])
 
     return <>
-        <div className="row my-5 mx-5">
-            <Link to={`/itineraries/edit/${itineraryId}`} className="btn btn-primary col-3">Edit</Link>
-            <button className="btn btn-primary col-3" onClick={() => {
-                if (
-                    window.confirm(
-                      `Are you sure you want to delete this itinerary?`
-                    )
-                )
-                deleteItinerary(itinerary.id)
-                    .then(() => navigate(`/trips/${itinerary?.trip?.id}`))
-            }
-            }>Delete</button>
+        <div className="container">
+            <div className="row mx-5 my-5">
+                <div className="col">
+                    <Link to={`/itineraries/edit/${itineraryId}`} className="btn btn-primary">Edit Itinerary</Link>
+                    <button className="btn btn-primary mx-2" onClick={() => {
+                        if (
+                            window.confirm(
+                            `Are you sure you want to delete this itinerary?`
+                            )
+                        )
+                        deleteItinerary(itinerary.id)
+                            .then(() => navigate(`/trips/${itinerary?.trip?.id}`))
+                    }
+                    }>Delete Itinerary</button>
+                </div>
+            </div>
+            <div className="row mx-5 my-5">
+                <h5>{itinerary.name}</h5>
+                <p>{itinerary.itinerary_description}</p>
+            </div>
         </div>
-        <h5>{itinerary.name}</h5>
-        <p>{itinerary.itinerary_description}</p>
     </>
 }

@@ -1,12 +1,10 @@
 // Generate a list of trip notes added by the user
 
-import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react"
 import { getPackingListByTrip, addItem, deleteItem, getItem, updateItem } from "../managers/PackingListManager"
 
 export const PackingList = ({ tripId }) => {
 
-    const navigate = useNavigate()
     const [packingList, setPackingList] = useState([])
     const [newItem, setNewItem] = useState("")
 
@@ -20,26 +18,37 @@ export const PackingList = ({ tripId }) => {
         []
     ) 
 
-    useEffect(
-        () => {
-            getPackingListByTrip(tripId)
-            .then( packingListArray => {
-                setPackingList(packingListArray)
-            })
-        },
-        [packingList]
-    ) 
-
-    const changeNewItemState = (event) => {
-        const copy = { ...newItem }
-        copy[event.target.name] = event.target.value
-        setNewItem(copy)
-    }
-
     async function updateCurrentItem (evt) {
         let item = await getItem(parseInt(evt.target.id))
         item["packed"] = !(item.packed)
         await updateItem(item.id, item)
+    }
+
+    async function createNewItem () {
+        
+        const itemToPost = {
+            trip_id: tripId,
+            item: newItem,
+            packed: false
+        }
+
+        setNewItem("")
+
+        await addItem(itemToPost)
+
+        await getPackingListByTrip(tripId)
+                .then( packingListArray => {
+                    setPackingList(packingListArray)
+                })
+    }
+
+    async function deleteCurrentItem(event) {
+        await deleteItem(parseInt(event.target.id))
+
+        await getPackingListByTrip(tripId)
+            .then( packingListArray => {
+                setPackingList(packingListArray)
+            })
     }
 
     return <>
@@ -48,18 +57,10 @@ export const PackingList = ({ tripId }) => {
             <h5 style={{textAlign: 'center'}}>Packing List</h5>
         </div>
         <div className="row col-11 mx-auto my-2 form-group">
-            <textarea className="form-control" rows="4" name="item" value={newItem.item} onChange={changeNewItemState}/>
+            <textarea className="form-control" rows="4" name="item" value={newItem} onChange={(evt) => setNewItem(evt.target.value)}/>
         </div>
         <div className='row col-6 mx-auto my-2'>
-            <button type="button" className="btn btn-primary my-2" onClick={() => {
-                
-                const itemToPost = {
-                    trip_id: tripId,
-                    item: newItem.item,
-                    packed: false
-                }
-
-                addItem(itemToPost)}}
+            <button type="button" className="btn btn-primary my-2" onClick={createNewItem}
             >Add Item</button>
         </div>
             <div className="card my-5 mx-5">
@@ -74,8 +75,8 @@ export const PackingList = ({ tripId }) => {
                                         onClick={(evt) =>  updateCurrentItem(evt)} />
                                     <label htmlFor={item.item}>{item?.item}</label><br/>
 
-                                <button type="button" style={{float: "right"}} className="btn btn-primary btn-sm" onClick={() => 
-                                    {deleteItem(item.id)}}
+                                <button type="button" style={{float: "right"}} id={item.id} className="btn btn-primary btn-sm" onClick={(event) => 
+                                    {deleteCurrentItem(event)}}
                                 >Delete</button>
                                 </li>
                             </div>

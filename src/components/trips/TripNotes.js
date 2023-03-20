@@ -17,19 +17,8 @@ export const TripNotes = ({ tripId }) => {
         },
         []
     ) 
-    
-    useEffect(
-        () => {
-            getTripNotesByTrip(tripId)
-            .then( notesArray => {
-                setNotes(notesArray)
-            })
-        },
-        [notes]
-    ) 
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault()
+    async function createNewNote () {
 
         const noteToPost = {
             trip_id: tripId,
@@ -38,8 +27,22 @@ export const TripNotes = ({ tripId }) => {
 
         setNewNote("")
         
-        createTripNote(noteToPost)
+        await createTripNote(noteToPost)
 
+        await getTripNotesByTrip(tripId)
+            .then( notesArray => {
+                setNotes(notesArray)
+            })
+
+    }
+
+    async function deleteCurrentNote(event) {
+        await deleteTripNote(parseInt(event.target.id))
+
+        await  getTripNotesByTrip(tripId)
+            .then( notesArray => {
+                setNotes(notesArray)
+            })
     }
 
     return <>
@@ -48,10 +51,10 @@ export const TripNotes = ({ tripId }) => {
             <h5 style={{textAlign: 'center'}}>Trip Notes</h5>
         </div>
         <div className="row col-11 mx-auto my-2 form-group">
-            <textarea className="form-control" rows="4" name="trip_note" value={newNote} onChange={ (event) => setNewNote(event.target.value)}/>
+            <textarea className="form-control" rows="4" name="trip_note" value={newNote} onChange={(event) => setNewNote(event.target.value)}/>
         </div>
         <div className='row col-6 mx-auto my-2'>
-            <button type="button" className="btn btn-primary my-2" onClick={(evt) => {handleSubmit(evt)}}
+            <button type="button" className="btn btn-primary my-2" onClick={createNewNote}
             >Add Note</button>
         </div>
             <div className="card my-5 mx-5">
@@ -61,8 +64,8 @@ export const TripNotes = ({ tripId }) => {
                             <div className='row' key={`tripNote--${note.id}`}>
                                 <li className="list-group-item">
                                     {note.trip_note}
-                                <button type="button" style={{float: "right"}} className="btn btn-primary btn-sm" onClick={() => 
-                                    {deleteTripNote(note.id)}}
+                                <button type="button" style={{float: "right"}} id={note.id} className="btn btn-primary btn-sm" onClick={(event) => 
+                                    {deleteCurrentNote(event)}}
                                 >Delete</button>
                                 </li>
                             </div>

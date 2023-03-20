@@ -20,6 +20,16 @@ export const PackingList = ({ tripId }) => {
         []
     ) 
 
+    useEffect(
+        () => {
+            getPackingListByTrip(tripId)
+            .then( packingListArray => {
+                setPackingList(packingListArray)
+            })
+        },
+        [packingList]
+    ) 
+
     const changeNewItemState = (event) => {
         const copy = { ...newItem }
         copy[event.target.name] = event.target.value
@@ -30,7 +40,6 @@ export const PackingList = ({ tripId }) => {
         let item = await getItem(parseInt(evt.target.id))
         item["packed"] = !(item.packed)
         await updateItem(item.id, item)
-        //.then(() => navigate(0))
     }
 
     return <>
@@ -50,9 +59,8 @@ export const PackingList = ({ tripId }) => {
                     packed: false
                 }
 
-                addItem(itemToPost).then(() => window.location.reload())
-
-            }}>Add Item</button>
+                addItem(itemToPost)}}
+            >Add Item</button>
         </div>
             <div className="card my-5 mx-5">
                 <ul className="list-group list-group-flush">
@@ -67,8 +75,8 @@ export const PackingList = ({ tripId }) => {
                                     <label htmlFor={item.item}>{item?.item}</label><br/>
 
                                 <button type="button" style={{float: "right"}} className="btn btn-primary btn-sm" onClick={() => 
-                                    {deleteItem(item.id).then(() => window.location.reload())
-                                }}>Delete</button>
+                                    {deleteItem(item.id)}}
+                                >Delete</button>
                                 </li>
                             </div>
                             )

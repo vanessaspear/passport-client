@@ -26,10 +26,11 @@ export const PackingList = ({ tripId }) => {
         setNewItem(copy)
     }
 
-    const updateCurrentItem = (evt) => {
-        let item = getItem(parseInt(evt.target.id))
+    async function updateCurrentItem (evt) {
+        let item = await getItem(parseInt(evt.target.id))
         item["packed"] = !(item.packed)
-        updateItem(item.id, item).then(() => navigate(0))
+        await updateItem(item.id, item)
+        //.then(() => navigate(0))
     }
 
     return <>

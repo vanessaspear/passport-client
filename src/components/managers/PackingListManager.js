@@ -24,7 +24,7 @@ export const getItem = (itemId) => {
 }
 
 export const updateItem = (itemId, item) => {
-    return fetchIt(`${API}/packlinglist/${itemId}`, {
+    return fetchIt(`${API}/packinglist/${itemId}`, {
         method: 'PUT',
         body: JSON.stringify(item)
     })

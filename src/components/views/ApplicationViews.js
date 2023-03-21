@@ -6,6 +6,7 @@ import { Itineraries } from "../itineraries/Itineraries"
 import { ItineraryDetails } from "../itineraries/ItineraryDetails"
 import { ItineraryForm } from "../itineraries/ItineraryForm"
 import { EditItinerary } from "../itineraries/EditItinerary"
+import { Stamps } from "../stamps/Stamps"
 
 export const ApplicationViews = () => {
 	return (
@@ -19,6 +20,7 @@ export const ApplicationViews = () => {
       <Route path="/itineraries/:itineraryId" element={<ItineraryDetails />} />
       <Route path="/itineraries/:tripId/new" element={<ItineraryForm />} />
       <Route path="/itineraries/edit/:itineraryId" element={<EditItinerary />} />
+      <Route path="/stamps" element={<Stamps />} />
     </Routes>
   );
 }

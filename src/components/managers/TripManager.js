@@ -41,3 +41,7 @@ export const getReasons = () => {
 export const getUpcomingTripCount = () => {
     return fetchIt(`${API}/trips/upcoming`)
 }
+
+export const getPastTrips = () => {
+    return fetchIt(`${API}/trips/past`)
+}

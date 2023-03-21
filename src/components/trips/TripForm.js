@@ -16,6 +16,8 @@ export const TripForm = () => {
         state_or_country: "",
         departure_date: "",
         return_date: "",
+        latitude: 0,
+        longitude: 0,
         reasons: []
     })
     
@@ -93,6 +95,20 @@ export const TripForm = () => {
                         onChange={changeTripState}
                     />
                 </div>
+                <div className="form-group">
+                    <label htmlFor="latitude">Latitude (N(+)/S(-)):</label>
+                    <input type="number" name="latitude" required autoFocus className="form-control"
+                        value={currentTrip.latitude}
+                        onChange={changeTripState}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="longitude">Longitude (E(+)/W(-)):</label>
+                    <input type="number" name="longitude" required autoFocus className="form-control"
+                        value={currentTrip.longitude}
+                        onChange={changeTripState}
+                    />
+                </div>
                 <div className="field">
                     <label htmlFor="content" className="label">Reasons: </label>
                     {
@@ -123,6 +139,8 @@ export const TripForm = () => {
                             state_or_country: currentTrip.state_or_country,
                             departure_date: currentTrip.departure_date,
                             return_date: currentTrip.return_date,
+                            latitude: parseFloat(currentTrip.latitude), 
+                            longitude: parseFloat(currentTrip.longitude), 
                             reasons: Array.from(tripReasons)
                         }
 

@@ -10,8 +10,8 @@ export const getTrip = (trip_id) => {
     return fetchIt(`${API}/trips/${trip_id}`)
 }
 
-export const getTripsByUser = (user_id) => {
-    return fetchIt(`${API}/trips?user_id=${user_id}`)
+export const getTripsByUser = () => {
+    return fetchIt(`${API}/trips?filter_by=user`)
 }
 
 export const createTrip = (trip) => {

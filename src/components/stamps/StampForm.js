@@ -113,13 +113,13 @@ export const StampForm = () => {
             </div>
         </fieldset>
         {
-            selectedType==1 ? <StampPhoto selectedTrip={selectedTrip} selectedItinerary={selectedItinerary}/> : ""
+            selectedType==1 ? <StampPhoto selectedTrip={selectedTrip} selectedItinerary={selectedItinerary} selectedType={selectedType}/> : ""
         }
         {
-            selectedType==2 ? <StampJournal selectedTrip={selectedTrip} selectedItinerary={selectedItinerary}/> : ""
+            selectedType==2 ? <StampJournal selectedTrip={selectedTrip} selectedItinerary={selectedItinerary} selectedType={selectedType}/> : ""
         }
         {
-            selectedType==3 ? <StampProduct selectedTrip={selectedTrip} selectedItinerary={selectedItinerary}/> : ""
+            selectedType==3 ? <StampProduct selectedTrip={selectedTrip} selectedItinerary={selectedItinerary} selectedType={selectedType}/> : ""
         }
         </form>
     </div>

@@ -1,10 +1,17 @@
 //Primary page for stamps' components
 
 import { TripsMap } from "./TripsMap"
+import { Link } from 'react-router-dom'
 
 export const Stamps = () => {
     
     return <>
         <TripsMap />
+
+        <div className="container">
+            <div className="row my-4 mx-5">
+                <Link to={`/stamps/new`} className="btn btn-primary col-3">Add Stamp</Link>
+            </div>
+        </div>
     </>
 }

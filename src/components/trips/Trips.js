@@ -8,14 +8,12 @@ import { Trip } from "./Trip"
 
 export const Trips = () => {
 
-const localUser = localStorage.getItem("passport_token")
-const userObject = JSON.parse(localUser)
 const [trips, setTrips] = useState([])
 const [upcomingTripCount, setUpcomingTripCount] = useState([])
 
 useEffect(
     () => {
-        getTripsByUser(userObject.id)
+        getTripsByUser()
         .then( userTripsArray => {
             setTrips(userTripsArray)
         })

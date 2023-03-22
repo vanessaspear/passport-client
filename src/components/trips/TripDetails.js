@@ -48,7 +48,9 @@ export const TripDetails = () => {
         <div className="row my-1 mx-5">
             <Link className="btn btn-primary col-3" to={`/itineraries/${tripId}/new`}>Add Itinerary</Link>
         </div>
-        <Itineraries tripId={tripId}/>
+        <div className="itineraries-scroll-bar">
+            <Itineraries tripId={tripId}/>
+        </div>
         <hr style={{marginRight: 40, marginLeft: 40}}></hr>
         <PackingList tripId={tripId} />
         <hr style={{marginRight: 40, marginLeft: 40}}></hr>

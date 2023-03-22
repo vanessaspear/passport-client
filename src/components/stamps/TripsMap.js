@@ -19,7 +19,7 @@ export const TripsMap = () => {
     )
 
     return <>
-        <MapContainer center={[15, 8]} zoom={1.5} scrollWheelZoom={false} style={{ height: "500px" }}>
+        <MapContainer center={[15, 5]} zoom={1.5} scrollWheelZoom={false} style={{ height: "500px" }}>
             <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

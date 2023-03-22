@@ -30,6 +30,7 @@ export const ItineraryDetails = () => {
         <div className="container">
             <div className="row mx-5 my-5">
                 <div className="col">
+                    <Link to={`/trips/${itinerary.trip.id}`} className="btn btn-primary mx-2">Back</Link>
                     <Link to={`/itineraries/edit/${itineraryId}`} className="btn btn-primary">Edit Itinerary</Link>
                     <button className="btn btn-primary mx-2" onClick={() => {
                         if (

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { createStampPhoto } from "../managers/StampManager";
+import { Link } from "react-router-dom"
 
 export const StampPhoto = ({ selectedTrip, selectedItinerary, selectedType}) => {
 

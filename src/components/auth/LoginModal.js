@@ -111,11 +111,10 @@ export const LoginModal = ({ show, handleClose, setLoggedIn }) => {
     })
       .then((res) => res.json())
       .then((createdUser) => {
-        if (createdUser.hasOwnProperty("id")) {
+        if (createdUser.hasOwnProperty("token")) {
           localStorage.setItem(
             "passport_token",
             JSON.stringify({
-              id: createdUser.id,
               name: createdUser.first_name,
               token: createdUser.token,
             })

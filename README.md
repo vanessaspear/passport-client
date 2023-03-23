@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+Passport
+------
+<img width="610" alt="Screenshot 2023-03-23 at 4 57 22 PM" src="https://user-images.githubusercontent.com/112430942/227373858-c8c6765b-64ec-4f38-a00f-0b6ba0396d93.png">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Application Overview
 
-## Available Scripts
+Do you love to travel? Passport is meant for you! Passport is a full stack application designed for people who want to plan and document their trips.  Whether you're headed home for the holidays or headed to Munich for Oktoberfest, Passport is your partner in travel. 
 
-In the project directory, you can run:
+### Features
+- Users can create new trips and add itineraries, a packing list, and trip notes 
+- Users can see an interactive map of all the places they visited during their travels
+- Users can add Passport "stamps" (photos, journal entries, products) from their trips for lasting memories 
+- Users can switch viewports without impacting their app experience through the use of responsive design
+  
+### Technologies Used
 
-### `npm start`
+#### Backend Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img alt="Python" src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"><img alt="Django" src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green"><img alt="Django REST" src="https://img.shields.io/badge/django%20rest-ff1709?style=for-the-badge&logo=django&logoColor=white"><img alt="SQLite" src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"><img alt="Leaflet" src="https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=Leaflet&logoColor=white"><img alt="GIT" src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white"><img alt="Github" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"><img alt="VScode" src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Frontend Technologies
 
-### `npm test`
+<img alt="Javascript" src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"><img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"><img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"><img alt="CSS" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img alt="Bootstrap" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"><img alt="GIT" src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white"><img alt="Github" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"><img alt="VScode" src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"><img alt="Miro" src="https://img.shields.io/badge/Miro-F7C922?style=for-the-badge&logo=Miro&logoColor=050036"><img alt="" src="">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the planning stages, I used DB Diagram to create an entity relationship diagram and Miro to create a wireframe.  Both documents helped with solution design and were referenced throughout my work building out this app.  I also used a Github project board to create issues and manage work.
 
-### `npm run build`
+* [Passport ERD](https://dbdiagram.io/d/6406090c296d97641d85cc8e)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [Passport Wireframe](https://miro.com/app/board/uXjVPhQbM4U=/?share_link_id=955298799066)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* [Passport Agile Project Board](https://github.com/users/vanessaspear/projects/1/views/1)
+            
+### Running the Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Required dependencies:** 
+- Python
+- Django
+- React + React-DOM
+- NPM
+- Leaflet
+- Bootstrap
+- Pillow
 
-### `npm run eject`
+Navigate to your workspace directory. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Run the following command in terminal to setup the server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+git clone git@github.com:vanessaspear/passport-api.git
+cd passport-api
+python manage.py runserver
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Seed the database: 
+- Run the following commands in terminal
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py loaddata users tokens types trips trip_reasons trip_notes stamp_photos reasons packing_list itinerary_categories itineraries categories
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Run the following command in terminal to setup the client:
 
-## Learn More
+```
+git clone git@github.com:vanessaspear/passport-client.git
+cd passport-client
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You should now be able to sign in to the application. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To demo the app, register as a new user with an email and password or use the below login credentials.
+```
+username/email: jjones@travel.com
+password: globetrotter
+```
 
-### Code Splitting
+Author
+------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Vanessa Spear 
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[<img alt="Github" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">](https://github.com/vanessaspear)[<img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">](https://www.linkedin.com/in/vanessavspear/)

@@ -44,17 +44,19 @@ export const TripDetails = () => {
                 }>Delete Trip</button>
             </div>
         </div>
-        <h5 style={{textAlign: 'center'}}>Trip Itineraries</h5>
-        <div className="row my-1 mx-5">
-            <Link className="btn btn-primary col-3" to={`/itineraries/${tripId}/new`}>Add Itinerary</Link>
-        </div>
-        <div className="itineraries-scroll-bar">
+        <div className="itineraries-scroll-bar tripDetails--item">
+            <h5 className="my-5" style={{textAlign: 'center', fontFamily: 'Fuzzy Bubbles', fontSize: 'xx-large'}}>Trip Itineraries</h5>
+            <div className="row my-1 mx-5">
+                <Link className="btn btn-primary col-3" to={`/itineraries/${tripId}/new`}>Add Itinerary</Link>
+            </div>
             <Itineraries tripId={tripId}/>
         </div>
-        <hr style={{marginRight: 40, marginLeft: 40}}></hr>
-        <PackingList tripId={tripId} />
-        <hr style={{marginRight: 40, marginLeft: 40}}></hr>
-        <TripNotes tripId={tripId}/>
+        <div>
+            <PackingList tripId={tripId} />
+        </div>
+        <div>
+            <TripNotes tripId={tripId}/>
+        </div>
         </div>
     </>
 }

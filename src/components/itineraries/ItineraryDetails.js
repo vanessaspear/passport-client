@@ -45,8 +45,14 @@ export const ItineraryDetails = () => {
                 </div>
             </div>
             <div className="row mx-5 my-5">
-                <h5>{itinerary.name}</h5>
+                <h5 className="my-3" style={{textDecoration: "underline"}}>{itinerary.name}</h5>
+                <p>Date: {itinerary.date}</p>
+                <p>From {itinerary.start_time} to {itinerary.end_time}</p>
                 <p>{itinerary.itinerary_description}</p>
+                <p>Location: {itinerary.city}, {itinerary.state_or_country}</p> 
+                {
+                    itinerary.categories.map(category => <p># {category.category}</p>)
+                }    
             </div>
         </div>
     </>

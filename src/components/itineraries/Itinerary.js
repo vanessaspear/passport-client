@@ -18,11 +18,6 @@ export const Itinerary = ({ itinerary }) => {
                     <p className="card-text">
                         {itinerary.city}, {itinerary.state_or_country}
                     </p>
-                    <p className="card-text">
-                        Category: {
-                            itinerary?.categories?.map(category => category?.category).join(", ")
-                        }
-                    </p>  
                     <Link to={`/itineraries/${itinerary.id}`} className="btn btn-outline-primary btn-sm">View Itinerary Details</Link>
                 </div>
             </div>

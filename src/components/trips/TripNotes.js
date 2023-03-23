@@ -46,7 +46,7 @@ export const TripNotes = ({ tripId }) => {
     }
 
     return <>
-    <div className='container'>
+    <div className='container tripDetails--item'>
         <div className='row'>
             <h5 style={{textAlign: 'center'}}>Trip Notes</h5>
         </div>

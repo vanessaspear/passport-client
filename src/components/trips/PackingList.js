@@ -54,7 +54,7 @@ export const PackingList = ({ tripId }) => {
     return <>
     <div className='container tripDetails--item'>
         <div className='row'>
-            <h5 style={{textAlign: 'center'}}>Packing List</h5>
+        <h5 className="my-5" style={{textAlign: 'center', fontFamily: 'Fuzzy Bubbles', fontSize: 'xx-large'}}>Packing List</h5>
         </div>
         <div className="row col-11 mx-auto my-2 form-group">
             <textarea className="form-control" rows="4" name="item" value={newItem} onChange={(evt) => setNewItem(evt.target.value)}/>

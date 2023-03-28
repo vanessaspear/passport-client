@@ -38,7 +38,7 @@ export const ItineraryForm = () => {
 
 
     return (
-        <form className="itineraryForm">
+        <form className="itineraryForm mx-5 my-5">
             <h2 className="itineraryForm__title">Itinerary Information</h2>
             <fieldset>
                 <div className="form-group">

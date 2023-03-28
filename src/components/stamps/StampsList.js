@@ -35,7 +35,7 @@ export const StampsList = () => {
         <div className="row justify-content-center">
         {
             photos.map( photo => <>
-            <div className="card" style={{width: 450}} key={photo.id}>
+            <div className="card" style={{width: 450}} key={`photo--${photo.id}`}>
                 <img src={`http://localhost:8000/${photo.image}`} className="card-img-top" alt="Photo from trip"></img>
                 <div className="card-body" style={{height: "auto"}}>
                     <h5 className="card-title">{formatDate(photo.date_created)} @ {formatTime(photo.date_created)}</h5>

@@ -54,7 +54,7 @@ export const StampForm = () => {
     return <>
     
     <div className="container">
-        <form className="stampForm">
+        <form className="stampForm mx-5 my-5">
         <h2 className="stampForm__title">New Stamp</h2>
         <fieldset>
             <div className="form-group">

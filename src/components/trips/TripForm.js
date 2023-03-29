@@ -53,7 +53,7 @@ export const TripForm = () => {
 
 
     return (
-        <form className="tripForm">
+        <form className="tripForm mx-5 my-5">
             <h2 className="tripForm__title">
                 {
                     tripId ? "Update Trip Information" : "Add Trip Information"

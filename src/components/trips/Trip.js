@@ -1,9 +1,7 @@
 //Generates the trip card to be displayed in the trip list
 
-import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import './Trips.css'
-import { getPhotosByTrip } from "../managers/TripPhotoManager"
 
 export const Trip = ({ trip }) => {
 

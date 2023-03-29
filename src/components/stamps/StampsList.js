@@ -1,11 +1,15 @@
 //Generates the list of all user stamps (product, journal, and photos)
 
 import { useState, useEffect } from "react"
-import { getStampPhotosByUser } from "../managers/StampManager"
+import { getStampPhotosByUser, getStampJournalsByUser, getStampProductsByUser } from "../managers/StampManager"
+import { Stamp } from "./Stamp"
 
 export const StampsList = () => {
 
     const [photos, setPhotos] = useState([])
+    const [journals, setJournals] = useState([])
+    const [products, setProducts] = useState([])
+    const [stamps, setStamps] = useState([])
 
     useEffect(
         () => {
@@ -13,37 +17,40 @@ export const StampsList = () => {
             .then( userPhotosArray => {
                 setPhotos(userPhotosArray)
             })
+
+            getStampJournalsByUser()
+            .then( userJournalsArray => {
+                setJournals(userJournalsArray)
+            })
+
+            getStampProductsByUser()
+            .then( userProductsArray => {
+                setProducts(userProductsArray)
+            })
+
         },
         []
     ) 
 
-    const formatDate = (dateString) => {
-        const date = new Date(dateString)
-        const options = { year: 'numeric', month: 'long', day: 'numeric' }
-        const formattedDate = date.toLocaleDateString('en-US', options)
-        return formattedDate
-    }
-
-    const formatTime = (dateString) => {
-        const date = new Date(dateString)
-        const options = { hour: 'numeric', minute: 'numeric', hour12: true }
-        const formattedTime = date.toLocaleTimeString('en-US', options)
-        return formattedTime
+    useEffect(
+        () => {
+            Stamps()
+        },
+        [photos, journals, products]
+    )
+    
+    //Creates a single list of combined stamps
+    const Stamps = () => {
+        let combinedStampsList = [...photos, ...journals, ...products]
+        combinedStampsList.sort((a,b) => (new Date(b.date_created) - new Date(a.date_created)))
+        return setStamps(combinedStampsList)
     }
 
     return <>
         <div className="row justify-content-center">
-        {
-            photos.map( photo => <>
-            <div className="card" style={{width: 450}} key={`photo--${photo.id}`}>
-                <img src={`http://localhost:8000/${photo.image}`} className="card-img-top" alt="Photo from trip"></img>
-                <div className="card-body" style={{height: "auto"}}>
-                    <h5 className="card-title">{formatDate(photo.date_created)} @ {formatTime(photo.date_created)}</h5>
-                    <p className="card-text">{photo.description}</p>
-                </div>
-            </div>
-            </>
-        )}
+            {
+                stamps.map(stamp => {return <Stamp key={`${stamp?.type?.type}--${stamp.id}`} stamp={stamp}/>})
+            }
         </div>
     </>
 }

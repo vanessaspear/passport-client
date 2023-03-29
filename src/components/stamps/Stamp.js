@@ -28,10 +28,27 @@ export const Stamp = ({ stamp }) => {
         </>
     }
     else if (stamp?.type?.id == 2){
-        return <>This is a journal stamp</>
+        return <>
+            <div className="card" style={{width: 450}} key={`photo--${stamp.id}`}>
+                <div className="card-body" style={{height: "auto"}}>
+                    <h5 className="card-title">{formatDate(stamp.date_created)} @ {formatTime(stamp.date_created)}</h5>
+                    <h6 className="card-subtitle my-2 text-muted">{stamp.name}</h6>
+                    <p className="card-text">{stamp.entry}</p>
+                </div>
+            </div>
+        </>
     }
-    else {
-        return <>This is a product stamp</>
+    else if (stamp?.type?.id == 3) {
+        return <>
+            <div className="card" style={{width: 450}} key={`photo--${stamp.id}`}>
+                <div className="card-body" style={{height: "auto"}}>
+                    <h5 className="card-title">{formatDate(stamp.date_created)} @ {formatTime(stamp.date_created)}</h5>
+                    <h6 className="card-subtitle my-2 text-muted">{stamp.name}</h6>
+                    <p className="card-text">{stamp.description}</p>
+                    <a href={stamp.link} className="card-link" target="_blank">Product link</a>
+                </div>
+            </div>
+        </>
     }
     
 }

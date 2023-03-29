@@ -6,7 +6,7 @@ import { Itineraries } from "../itineraries/Itineraries"
 import { ItineraryDetails } from "../itineraries/ItineraryDetails"
 import { ItineraryForm } from "../itineraries/ItineraryForm"
 import { EditItinerary } from "../itineraries/EditItinerary"
-import { Stamps } from "../stamps/Stamps"
+import { Stamps } from "../stamps/StampLanding"
 import { StampForm } from "../stamps/StampForm"
 
 export const ApplicationViews = () => {

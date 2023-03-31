@@ -12,6 +12,24 @@ Do you love to travel? Passport is meant for you! Passport is a full stack appli
 - Users can add Passport "stamps" (photos, journal entries, products) from their trips for lasting memories 
 - Users can switch viewports without impacting their app experience through the use of responsive design
   
+### User Experience
+
+#### View Trips and Trip Details
+------
+![](media/gifs/Passport-Trip-Details.gif)
+
+#### View Itineraries and Itinerary Details
+------
+![](media/gifs/Passport-Itinerary-Details.gif)
+
+#### View Places Traveled Map and Stamps 
+------
+![](media/gifs/Passport-Stamps-List.gif)
+
+#### Create a New Stamp 
+------
+![](media/gifs/Passport-New-Stamp.gif)
+
 ### Technologies Used
 
 #### Backend Technologies

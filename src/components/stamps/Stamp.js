@@ -1,5 +1,7 @@
 // Generates a stamp card based on the stamp type
 
+import { ImLocation, ImAirplane } from "react-icons/im";
+
 export const Stamp = ({ stamp }) => {
 
     const formatDate = (dateString) => {
@@ -24,6 +26,24 @@ export const Stamp = ({ stamp }) => {
                     <h5 className="card-title">{formatDate(stamp.date_created)} @ {formatTime(stamp.date_created)}</h5>
                     <p className="card-text">{stamp.description}</p>
                 </div>
+                <footer className="mb-3">
+                    <div className="row">
+                        <div className="col-1">
+                            <ImLocation />
+                        </div>
+                        <div className="col">
+                            {stamp?.trip?.city}, {stamp?.trip?.state_or_country}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-1">
+                            <ImAirplane />
+                        </div>
+                        <div className="col">
+                            {stamp?.trip?.name}
+                        </div>
+                    </div>
+                </footer>
             </div>
         </>
     }
@@ -35,6 +55,24 @@ export const Stamp = ({ stamp }) => {
                     <h6 className="card-subtitle my-2 text-muted">{stamp.name}</h6>
                     <p className="card-text">{stamp.entry}</p>
                 </div>
+                <footer className="mb-3">
+                    <div className="row">
+                        <div className="col-1">
+                            <ImLocation />
+                        </div>
+                        <div className="col">
+                            {stamp?.trip?.city}, {stamp?.trip?.state_or_country}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-1">
+                            <ImAirplane />
+                        </div>
+                        <div className="col">
+                            {stamp?.trip?.name}
+                        </div>
+                    </div>
+                </footer>
             </div>
         </>
     }
@@ -47,6 +85,24 @@ export const Stamp = ({ stamp }) => {
                     <p className="card-text">{stamp.description}</p>
                     <a href={stamp.link} className="card-link" target="_blank">Product link</a>
                 </div>
+                <footer className="mb-3">
+                    <div className="row">
+                        <div className="col-1">
+                            <ImLocation />
+                        </div>
+                        <div className="col">
+                            {stamp?.trip?.city}, {stamp?.trip?.state_or_country}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-1">
+                            <ImAirplane />
+                        </div>
+                        <div className="col">
+                            {stamp?.trip?.name}
+                        </div>
+                    </div>
+                </footer>
             </div>
         </>
     }
